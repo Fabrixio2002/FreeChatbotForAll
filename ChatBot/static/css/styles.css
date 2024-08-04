@@ -1,0 +1,204 @@
+/* Estilo para el cuerpo del documento */
+/* Estilo para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif; /* Fuente predeterminada */
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 0; /* Elimina el relleno predeterminado */
+    background-image: url('../img/fondo.png'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Cubre todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repite la imagen */
+    min-height: 100vh; /* Asegura que cubra toda la pantalla */
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    overflow: hidden; /* Elimina las barras de desplazamiento */
+}
+
+/* Estilo para la barra de navegación */
+.navbar {
+    width: 100%; /* La barra de navegación ocupa todo el ancho */
+    background-color: #006C3B; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    display: flex; /* Usa Flexbox para el diseño */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 10px 20px; /* Relleno interno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    box-sizing: border-box; /* Asegura que el relleno interno no cause desbordamiento */
+}
+
+/* Estilo para el logo en la barra de navegación */
+.logo img {
+    margin-left: 15px; /* Margen a la izquierda del logo */
+    height: 50px; /* Ajuste de la altura del logo */
+}
+
+/* Estilo para los botones de opciones en la barra de navegación */
+.nav-options {
+    display: flex;
+    align-items: center;
+    margin-right: 40px; /* Margen derecho para separar del borde de la pantalla */
+}
+
+.nav-options a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/* Estilo para los botones de opciones en la barra de navegación */
+.nav-options button {
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px; /* Relleno interno */
+    margin-left: 15px; /* Margen a la izquierda de cada botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: all 0.3s ease; /* Transición suave */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+}
+
+/* Efecto hover para los botones de opciones en la barra de navegación */
+.nav-options button:hover {
+    background-color: #ffffff20; /* Color de fondo blanco con opacidad al pasar el ratón */
+    color: #fff; /* Color del texto blanco */
+}
+
+/* Estilo para el contenedor del chat */
+.chat-container {
+    width: 550px;  /* Ancho del contenedor del chat */
+    height: calc(100vh - 150px); /* Ajusta la altura al espacio disponible */
+    max-width: 100%; /* Asegura que no exceda el ancho máximo del contenedor */
+    background-color: white; /* Color de fondo blanco */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-direction: column; /* Coloca los elementos en columna */
+    margin-top: 20px; /* Margen superior */
+    box-sizing: border-box; /* Asegura que el relleno interno no cause desbordamiento */
+}
+
+/* Estilo para el encabezado del chat */
+.chat-header {
+    background-color: #006C3B; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    padding: 10px; /* Relleno interno */
+    border-radius: 5px 5px 0 0; /* Bordes redondeados solo en la parte superior */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para la caja de chat */
+.chat-box {
+    height: calc(100% - 52px); /* Ajusta la altura al nuevo tamaño del contenedor */
+    overflow-y: auto; /* Agrega barra de desplazamiento vertical solo en el chat-box */
+    padding: 10px; /* Relleno interno */
+    border-bottom: 1px solid #ccc; /* Borde inferior */
+    flex-grow: 1; /* Permite que crezca para llenar el espacio disponible */
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-direction: column; /* Coloca los elementos en columna */
+    gap: 10px; /* Espacio entre mensajes */
+    box-sizing: border-box; /* Asegura que el relleno interno no cause desbordamiento */
+}
+
+/* Estilo para los mensajes del usuario */
+.message.user {
+    align-self: flex-end; /* Alinea a la derecha */
+    background-color: #006C3B; /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Relleno interno */
+    border-radius: 10px 10px 0 10px; /* Bordes redondeados */
+    max-width: 80%; /* Máximo ancho del mensaje */
+    word-wrap: break-word; /* Permite saltos de línea */
+}
+
+/* Estilo para los mensajes del bot */
+.message.bot {
+    align-self: flex-start; /* Alinea a la izquierda */
+    background-color: #f1f1f1; /* Fondo gris claro */
+    color: black; /* Texto negro */
+    padding: 10px; /* Relleno interno */
+    border-radius: 10px 10px 10px 0; /* Bordes redondeados */
+    max-width: 80%; /* Máximo ancho del mensaje */
+    word-wrap: break-word; /* Permite saltos de línea */
+}
+
+/* Animación de entrada de mensajes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.message {
+    animation: fadeIn 0.5s ease-in; /* Aplica la animación a los mensajes */
+}
+
+/* Estilo para la entrada de chat */
+.chat-input {
+    display: flex; /* Usa Flexbox para el diseño */
+    border-top: 1px solid #ccc; /* Borde superior */
+}
+
+
+/* Estilo para el campo de entrada de texto */
+#user-input {
+    width: calc(100% - 70px); /* Ancho del campo de entrada */
+    padding: 10px; /* Relleno interno */
+    border: none; /* Sin borde */
+    border-radius: 0 0 0 5px; /* Bordes redondeados solo en la parte inferior izquierda */
+    box-sizing: border-box; /* Asegura que el relleno interno no cause desbordamiento */
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+}
+
+/* Estilo específico para el botón de enviar */
+.chat-input button {
+    width: 70px; /* Ancho del botón de enviar */
+    border-radius: 0 0 5px 0; /* Bordes redondeados solo en la parte inferior derecha */
+    background-color: #006C3B; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: all 0.3s ease; /* Transición suave */
+    display: flex; /* Flexbox para centrar el ícono */
+    justify-content: center; /* Centra el ícono horizontalmente */
+    align-items: center; /* Centra el ícono verticalmente */
+}
+
+/* Efecto hover para el botón de enviar */
+.chat-input button:hover {
+    background-color: #00592F; /* Color de fondo verde oscuro al pasar el ratón */
+}
+
+/* Estilo para el pie de página */
+footer {
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Relleno interno */
+    background-color: #006C3B; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    width: 100%; /* Ancho completo */
+    position: fixed; /* Fija el pie de página */
+    bottom: 0; /* Posición en la parte inferior */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+.user-message {
+    align-self: flex-end; /* Alinea a la derecha */
+    background-color: #006C3B; /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Relleno interno */
+    border-radius: 10px 10px 0 10px; /* Bordes redondeados */
+    max-width: 80%; /* Máximo ancho del mensaje */
+    word-wrap: break-word; /* Permite saltos de línea */
+    animation: fadeIn 0.5s ease-in;
+}
+.bot-message{
+    align-self: flex-start; /* Alinea a la izquierda */
+    background-color: #f1f1f1; /* Fondo gris claro */
+    color: black; /* Texto negro */
+    padding: 10px; /* Relleno interno */
+    border-radius: 10px 10px 10px 0; /* Bordes redondeados */
+    max-width: 80%; /* Máximo ancho del mensaje */
+    word-wrap: break-word; /* Permite saltos de línea */
+    animation: fadeIn 0.5s ease-in; /* Aplica la animación a los mensajes */
+
+}

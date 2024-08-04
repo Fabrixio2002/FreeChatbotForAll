@@ -1,0 +1,141 @@
+{
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": [
+                "Hola",
+                "Hola, ¿qué tal?",
+                "Buenos días",
+                "Buenas tardes"
+            ],
+            "responses": [
+                "¡Hola! ¿Cómo estás?",
+                "Hola, ¿cómo puedo ayudarte?",
+                "¡Buenos días! ¿En qué puedo ayudarte hoy?"
+            ]
+        },
+        {
+            "tag": "funcionalidad",
+            "patterns": [
+                "¿Qué puedes hacer?",
+                "Funciones",
+                "Ayuda"
+            ],
+            "responses": [
+                "Puedo responder a tus preguntas y proporcionarte información.",
+                "Estoy aquí para ayudarte con cualquier consulta que tengas.",
+                "Mis funciones incluyen proporcionar información y asistencia."
+            ]
+        },
+        {
+            "tag": "despedida",
+            "patterns": [
+                "adios",
+                "Hasta luego",
+                "Chao"
+            ],
+            "responses": [
+                "¡Adiós! Que tengas un buen día.",
+                "Hasta luego. ¡Cuídate!",
+                "Chao. ¡Nos vemos pronto!"
+            ]
+        },
+        {
+            "tag": "imagen",
+            "patterns": [
+                "Muestra una imagen",
+                "¿Puedes enviarme una imagen?",
+                "Envíame una imagen"
+            ],
+            "responses": [
+                "Aquí tienes la imagen que solicitaste.",
+                "images/ejemplo.jpg"
+            ]
+        },
+        {
+            "tag": "pdf",
+            "patterns": [
+                "xd",
+                "¿que clases lleva ingenieria en computacion?",
+                "ingenieria en computacion"
+            ],
+            "responses": [
+                "documentos/Computacion.pdf"
+            ]
+        },
+        {
+            "tag": "admisiones",
+            "patterns": [
+                "¿Cómo me inscribo?",
+                "Proceso de admisión",
+                "¿Cuáles son los requisitos de admisión?"
+            ],
+            "responses": [
+                "Puedes inscribirte a través de nuestro sitio web llenando el formulario de admisión.",
+                "El proceso de admisión incluye completar el formulario en línea, presentar tus documentos y asistir a una entrevista.",
+                "Los requisitos de admisión incluyen certificado de estudios, identificación personal y completar el formulario de inscripción."
+            ]
+        },
+        {
+            "tag": "carreras",
+            "patterns": [
+                "¿Qué carreras ofrecen?",
+                "Programas disponibles",
+                "Oferta académica"
+            ],
+            "responses": [
+                "Ofrecemos una variedad de carreras, incluyendo Ingeniería en Computación, Administración de Empresas, Derecho, y más.",
+                "Puedes consultar nuestra oferta académica completa en nuestro sitio web.",
+                "Contamos con programas de pregrado y posgrado en diversas áreas del conocimiento."
+            ]
+        },
+        {
+            "tag": "promociones",
+            "patterns": [
+                "¿Hay alguna promoción disponible?",
+                "Promociones actuales",
+                "Descuentos"
+            ],
+            "responses": [
+                "Actualmente tenemos una promoción del 20% de descuento en la matrícula para nuevos estudiantes.",
+                "Puedes consultar todas nuestras promociones en nuestra página web.",
+                "Ofrecemos descuentos especiales en programas seleccionados. ¡No te los pierdas!"
+            ]
+        },
+        {
+            "tag": "contacto",
+            "patterns": [
+                "Información de contacto",
+                "¿Cómo puedo comunicarme con la universidad?",
+                "Teléfono y correo de contacto"
+            ],
+            "responses": [
+                "Puedes comunicarte con nosotros llamando al (504) 1234-5678 o enviando un correo a info@uth.edu.hn.",
+                "Nuestra dirección es Avenida Principal 123, Tegucigalpa, Honduras.",
+                "También puedes contactarnos a través de nuestras redes sociales en Facebook, Twitter e Instagram."
+            ]
+        },
+        {
+            "tag": "horarios",
+            "patterns": [
+                "¿Cuáles son los horarios de clases?",
+                "Horarios de atención",
+                "¿Cuándo puedo asistir a las clases?"
+            ],
+            "responses": [
+                "Los horarios de clases varían según la carrera y el semestre. Puedes consultarlos en nuestro sitio web.",
+                "Nuestro horario de atención es de lunes a viernes, de 8:00 am a 5:00 pm.",
+                "Las clases se imparten en diferentes horarios para adaptarse a las necesidades de los estudiantes."
+            ]
+        },
+        {
+            "tag": "pregunta_frecuente",
+            "patterns": [
+                "cuanod juega el olimpia",
+                "hi",
+                "asdfsdf"
+            ],
+            "responses": []
+        }
+    ]
+}

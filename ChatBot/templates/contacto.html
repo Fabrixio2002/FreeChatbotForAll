@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | UTH</title>
+
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Ruta al archivo CSS de contacto -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contacto.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/uth2.png') }}">
+
+    <!-- Fuente de íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo2white.png') }}" alt="Logo" />
+        </div>
+        <div class="nav-options">
+            <a href="https://e-campus.uth.hn/login" target="_blank"><button>E-Campus</button></a>
+            <a href="https://uth.hn/canvas/" target="_blank"><button>Canvas</button></a>
+            <a href="{{ url_for('index') }}"><button>Chatbot</button></a>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h2>Agrega una Pregunta</h2>
+        </div>
+        <form id="frequent-question-form" class="contact-form">
+            <div class="form-group">
+                <label for="pregunta">Pregunta Frecuente:</label>
+                <i class="fas fa-question-circle help-icon" onclick="showHelp()"></i>
+            </div>
+            <textarea type="text" id="pregunta" name="pregunta" placeholder="Escribe tu pregunta aquí..." rows="6" required></textarea>
+            <button type="submit">Enviar Pregunta</button>
+        </form>
+    </div>
+
+    <!-- Modal de ayuda -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHelp()">&times;</span>
+            <p>¡Hola, estudiantes! Los invitamos a compartir sus preguntas aquí. Con sus aportes, podremos mantener nuestro chatbot 
+                actualizado y responder a sus inquietudes de manera más precisa. ¡Gracias por colaborar!
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSuccess()">&times;</span>
+            <p>Mensaje enviado correctamente. Te contactaremos pronto.</p>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de pregunta -->
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeQuestionModal()">&times;</span>
+            <p>Tu pregunta está siendo revisada y evaluada para ser agregada al chatbot en el futuro. ¡Gracias por apoyar a la universidad!</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Pochoclo. Todos los derechos reservados.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function showHelp() {
+            document.getElementById("help-modal").style.display = "block";
+        }
+
+        function closeHelp() {
+            document.getElementById("help-modal").style.display = "none";
+        }
+
+        function closeSuccess() {
+            document.getElementById("success-modal").style.display = "none";
+        }
+
+        function showSuccess() {
+            document.getElementById("success-modal").style.display = "block";
+        }
+
+        function showQuestionModal() {
+            document.getElementById("question-modal").style.display = "block";
+        }
+
+        function closeQuestionModal() {
+            document.getElementById("question-modal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const helpModal = document.getElementById("help-modal");
+            const successModal = document.getElementById("success-modal");
+            const questionModal = document.getElementById("question-modal");
+            if (event.target == helpModal) {
+                helpModal.style.display = "none";
+            }
+            if (event.target == successModal) {
+                successModal.style.display = "none";
+            }
+            if (event.target == questionModal) {
+                questionModal.style.display = "none";
+            }
+        }
+
+        document.getElementById("frequent-question-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var pregunta = document.getElementById("pregunta").value;
+            fetch('/enviar_pregunta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'pregunta=' + encodeURIComponent(pregunta)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                document.getElementById("pregunta").value = '';
+                showQuestionModal(); // Muestra el nuevo modal
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot | UTH</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/uth2.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo2white.png') }}" alt="Logo" />
+        </div>
+        <div class="nav-options">
+            <a href="https://e-campus.uth.hn/login" target="_blank"><button>E-Campus</button></a>
+            <a href="{{ url_for('admin') }}" target="_blank"><button>Canvas</button></a>
+            <a href="{{ url_for('contacto') }}"><button>Contacto</button></a>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>¿Alguna duda sobre UTH?</h2>
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí...">
+            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Pochoclo. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        function sendMessage(message) {
+            const chatBox = document.getElementById('chat-box');
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('user-message');
+            userMessage.textContent = message;
+            chatBox.appendChild(userMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            fetch('/mensaje', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'mensaje=' + encodeURIComponent(message)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('bot-message');
+
+                if (data.type === 'pdf') {
+                    const pdfLink = document.createElement('a');
+                    pdfLink.href = '/' + data.respuesta;
+                    pdfLink.textContent = "Aquí tienes el documento que solicitaste.";
+                    pdfLink.target = "_blank";
+                    botMessage.appendChild(pdfLink);
+                } else {
+                    botMessage.textContent = data.respuesta;
+                }
+
+                chatBox.appendChild(botMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        window.onload = function() {
+            const chatBox = document.getElementById('chat-box');
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('bot-message');
+            botMessage.textContent = "Hola, ¿en qué puedo ayudarte?";
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+
+        document.getElementById('send-button').addEventListener('click', function () {
+            const userInput = document.getElementById('user-input');
+            if (userInput.value.trim() !== '') {
+                sendMessage(userInput.value.trim());
+                userInput.value = '';
+            }
+        });
+
+        document.getElementById('user-input').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.getElementById('send-button').click();
+            }
+        });
+    </script>
+</body>
+
+</html>
